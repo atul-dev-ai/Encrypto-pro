@@ -1,0 +1,127 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="max-w-5xl mx-auto mb-10">
+
+  <div
+    class="bg-white p-8 lg:p-12 rounded-3xl shadow-sm border border-slate-100 mb-8 flex flex-col md:flex-row items-center md:items-start gap-8 relative overflow-hidden">
+    <div
+      class="absolute top-0 right-0 w-64 h-64 bg-blue-50 rounded-full blur-3xl -z-10 opacity-50 translate-x-1/2 -translate-y-1/2">
+    </div>
+
+    <div class="w-32 h-32 rounded-full overflow-hidden shrink-0 shadow-xl shadow-blue-200 z-10">
+      <img src="/static/images/atul.jpg" alt="Atul Paul" class="w-full h-full object-cover">
+    </div>
+
+    <div class="text-center md:text-left flex-grow z-10">
+      <h1 class="text-3xl lg:text-4xl font-extrabold text-slate-900 tracking-tight mb-2">Atul Paul</h1>
+      <p class="text-blue-600 font-bold text-sm tracking-widest uppercase mb-4">Software Developer & AI Enthusiast</p>
+      <p class="text-slate-500 leading-relaxed text-sm max-w-2xl mx-auto md:mx-0">
+        I am a passionate software developer currently exploring Generative AI, Deep Learning, and building practical
+        applications. I love solving complex problems using Python and C, and I'm always eager to learn new technologies
+        and frameworks.
+      </p>
+
+      <div class="flex justify-center md:justify-start space-x-4 mt-6">
+        <a href="https://www.github.com/atul-dev-ai" target="_blank" title="GitHub"
+          class="p-2.5 bg-slate-50 text-slate-600 hover:text-white hover:bg-slate-900 rounded-xl transition shadow-sm"><i
+            data-lucide="github" class="w-5 h-5"></i></a>
+        <a href="https://www.linkedin.com/in/paul-atul" target="_blank" title="LinkedIn"
+          class="p-2.5 bg-slate-50 text-slate-600 hover:text-white hover:bg-blue-600 rounded-xl transition shadow-sm"><i
+            data-lucide="linkedin" class="w-5 h-5"></i></a>
+        <a href="https://www.twitter.com/paulatul020" target="_blank" title="Twitter"
+          class="p-2.5 bg-slate-50 text-slate-600 hover:text-white hover:bg-blue-400 rounded-xl transition shadow-sm"><i
+            data-lucide="twitter" class="w-5 h-5"></i></a>
+        <a href="mailto:contact@example.com" title="Email"
+          class="p-2.5 bg-slate-50 text-slate-600 hover:text-white hover:bg-rose-500 rounded-xl transition shadow-sm"><i
+            data-lucide="mail" class="w-5 h-5"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+    <div class="bg-white p-8 rounded-3xl shadow-sm border border-slate-100 hover:shadow-md transition">
+      <h2 class="text-xl font-bold text-slate-800 mb-6 flex items-center"><i data-lucide="cpu"
+          class="w-6 h-6 mr-2 text-blue-500"></i> Core Focus & Skills</h2>
+      <div class="flex flex-wrap gap-2">
+        <span class="px-3 py-1.5 bg-blue-50 text-blue-700 text-xs font-bold rounded-lg border border-blue-100">Python &
+          Flask</span>
+        <span class="px-3 py-1.5 bg-emerald-50 text-emerald-700 text-xs font-bold rounded-lg border border-blue-100">C
+          Programming</span>
+        <span
+          class="px-3 py-1.5 bg-slate-50 text-slate-700 text-xs font-bold rounded-lg border border-indigo-100">Generative
+          AI</span>
+        <span
+          class="px-3 py-1.5 bg-emerald-50 text-emerald-700 text-xs font-bold rounded-lg border border-indigo-100">
+          HTML</span>
+        <span
+          class="px-3 py-1.5 bg-indigo-50 text-indigo-700 text-xs font-bold rounded-lg border border-indigo-100">
+          CSS</span>
+        <span
+          class="px-3 py-1.5 bg-slate-50 text-slate-700 text-xs font-bold rounded-lg border border-slate-200">
+          JS</span>
+        <span
+          class="px-3 py-1.5 bg-indigo-50 text-indigo-700 text-xs font-bold rounded-lg border border-indigo-100">
+          TypeScript</span>
+        <span
+          class="px-3 py-1.5 bg-emerald-50 text-emerald-700 text-xs font-bold rounded-lg border border-indigo-100">
+          React</span>
+        <span
+          class="px-3 py-1.5 bg-slate-50 text-slate-700  text-xs font-bold rounded-lg border border-indigo-100">
+          Bootstrap</span>
+        <span
+          class="px-3 py-1.5 bg-emerald-50 text-emerald-700 text-xs font-bold rounded-lg border border-slate-200">Tailwind
+          CSS & Web UI</span>
+        <span
+          class="px-3 py-1.5 bg-blue-50 text-blue-700 text-xs font-bold rounded-lg border border-slate-200">
+          Django</span>
+        <span
+          class="px-3 py-1.5 bg-emerald-50 text-emerald-700 text-xs font-bold rounded-lg border border-slate-200">
+          Git</span>
+        <span
+          class="px-3 py-1.5 bg-slate-50 text-slate-700 text-xs font-bold rounded-lg border border-slate-200">
+          Github</span>
+        <span
+          class="px-3 py-1.5 bg-blue-50 text-blue-700 text-xs font-bold rounded-lg border border-slate-200">
+          MySQL</span>
+        <span
+          class="px-3 py-1.5 bg-slate-50 text-slate-700 text-xs font-bold rounded-lg border border-slate-200">
+          MongoBD</span>
+        <span
+          class="px-3 py-1.5 bg-blue-50 text-blue-700 text-xs font-bold rounded-lg border border-emerald-100">Trading
+          / SMC</span>
+      </div>
+    </div>
+
+    <div class="bg-white p-8 rounded-3xl shadow-sm border border-slate-100 hover:shadow-md transition">
+      <h2 class="text-xl font-bold text-slate-800 mb-6 flex items-center"><i data-lucide="folder-git-2"
+          class="w-6 h-6 mr-2 text-blue-500"></i> Featured Projects</h2>
+      <div class="space-y-5">
+        <div class="border-l-2 border-slate-300 pl-4 relative">
+          <div class="absolute w-2 h-2 bg-slate-300 rounded-full -left-[5px] top-1.5 ring-4 ring-white"></div>
+          <h4 class="text-sm font-bold text-slate-800">Algo Master Bot</h4>
+          <p class="text-xs text-slate-500 mt-1">Built with machine learning for crypto, gold, silver and forex markets. Accuracy is <span class="font-bold text-emerald-600">65.6%</span>.</p>
+        </div>
+        <div class="border-l-2 border-pink-500 pl-4 relative">
+          <div class="absolute w-2 h-2 bg-pink-500 rounded-full -left-[5px] top-1.5 ring-4 ring-white"></div>
+          <h4 class="text-sm font-bold text-slate-800">EncryptoPro Suite</h4>
+          <p class="text-xs text-slate-500 mt-1">A military-grade text and password encryption web application with
+            zero-knowledge architecture.</p>
+        </div>
+        <div class="border-l-2 border-indigo-500 pl-4 relative">
+          <div class="absolute w-2 h-2 bg-indigo-500 rounded-full -left-[5px] top-1.5 ring-4 ring-white"></div>
+          <h4 class="text-sm font-bold text-slate-800">Face & ID Card Detection</h4>
+          <p class="text-xs text-slate-500 mt-1">High-accuracy computer vision model built for automated detection.</p>
+        </div>
+        <div class="border-l-2 border-emerald-500 pl-4 relative">
+          <div class="absolute w-2 h-2 bg-emerald-500 rounded-full -left-[5px] top-1.5 ring-4 ring-white"></div>
+          <h4 class="text-sm font-bold text-slate-800">Book-Explorer Website</h4>
+          <p class="text-xs text-slate-500 mt-1">A web application developed to search and explore books.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+{% endblock %}

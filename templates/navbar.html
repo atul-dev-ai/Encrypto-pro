@@ -1,0 +1,53 @@
+<nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-200">
+  <div class="container mx-auto px-4 py-4 flex justify-between items-center max-w-5xl">
+    <a href="/#home" class="flex items-center space-x-2 cursor-pointer">
+      <div class="bg-gradient-to-tr from-pink-400 to-purple-700 p-2 rounded-xl text-white shadow-lg">
+        <i data-lucide="shield-check" class="w-6 h-6"></i>
+      </div>
+      <span class="text-xl font-bold tracking-tight text-slate-900">Encrypto<span
+          class="bg-gradient-to-r from-pink-400 to-purple-700 bg-clip-text text-transparent">Pro</span></span>
+    </a>
+
+    <div class="hidden md:flex items-center space-x-6 text-sm font-medium text-slate-500">
+      <a href="/#home" class="hover:text-pink-600 transition">Home</a>
+      <a href="/docs" class="hover:text-pink-600 transition">Documentation</a>
+      <a href="/developer" class="hover:text-pink-600 transition">Developer</a>
+      <div class="h-4 w-[1px] bg-slate-200"></div>
+      <span class="text-slate-400 font-normal">v2.0 Beta</span>
+    </div>
+
+    <button onclick="toggleMobileMenu()" class="md:hidden text-slate-600 hover:text-pink-600 focus:outline-none">
+      <i data-lucide="menu" id="mobile-menu-icon" class="w-6 h-6 transition-transform duration-200"></i>
+    </button>
+  </div>
+
+  <div id="mobile-menu"
+    class="hidden md:hidden bg-white border-t border-slate-100 absolute w-full shadow-xl transition-all duration-300 origin-top">
+    <div class="flex flex-col px-6 py-4 space-y-4 text-sm font-bold text-slate-600">
+      <a href="/#home" onclick="toggleMobileMenu()" class="hover:text-pink-600 flex items-center space-x-2">
+        <i data-lucide="home" class="w-4 h-4 text-pink-500"></i> <span>Home</span>
+      </a>
+      <a href="/docs" class="hover:text-emerald-600 flex items-center space-x-2">
+        <i data-lucide="book-open" class="w-4 h-4 text-emerald-500"></i> <span>Documentation</span>
+      </a>
+      <a href="/developer" onclick="toggleMobileMenu()" class="hover:text-blue-600 flex items-center space-x-2">
+        <i data-lucide="user" class="w-4 h-4 text-blue-500"></i> <span>Developer</span>
+      </a>
+    </div>
+  </div>
+</nav>
+
+<script>
+  function toggleMobileMenu() {
+    const menu = document.getElementById('mobile-menu');
+    const icon = document.getElementById('mobile-menu-icon');
+    if (menu.classList.contains('hidden')) {
+      menu.classList.remove('hidden');
+      icon.setAttribute('data-lucide', 'x');
+    } else {
+      menu.classList.add('hidden');
+      icon.setAttribute('data-lucide', 'menu');
+    }
+    lucide.createIcons();
+  }
+</script>

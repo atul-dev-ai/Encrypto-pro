@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="flex flex-col md:flex-row gap-8">
+
+  <aside class="md:w-1/4 hidden md:block">
+    <div class="sticky top-28 bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
+      <h3 class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-4">On this page</h3>
+      <ul class="space-y-3 text-sm font-medium text-slate-600">
+        <li><a href="#introduction" class="hover:text-blue-600 transition">1. Introduction</a></li>
+        <li><a href="#how-it-works" class="hover:text-blue-600 transition">2. How It Works</a></li>
+        <li><a href="#encryption" class="hover:text-blue-600 transition">3. Encrypting Data</a></li>
+        <li><a href="#decryption" class="hover:text-blue-600 transition">4. Decrypting Data</a></li>
+        <li><a href="#security" class="hover:text-blue-600 transition">5. Security & Privacy</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <div class="md:w-3/4 bg-white p-8 lg:p-10 rounded-3xl shadow-sm border border-slate-100">
+
+    <div class="mb-10 border-b border-slate-100 pb-8">
+      <h1 class="text-3xl lg:text-4xl font-extrabold text-slate-900 mb-4 tracking-tight">EncryptoPro Documentation</h1>
+      <p class="text-slate-500 leading-relaxed">Welcome to the official documentation for EncryptoPro. Learn how to
+        securely lock your text, codes, and passwords using military-grade AES-256 encryption.</p>
+    </div>
+
+    <div class="space-y-12">
+
+      <section id="introduction" class="scroll-mt-24">
+        <h2 class="text-2xl font-bold text-slate-800 mb-4 flex items-center"><i data-lucide="info"
+            class="w-6 h-6 mr-2 text-blue-500"></i> Introduction</h2>
+        <p class="text-slate-600 leading-relaxed mb-4">EncryptoPro is a state-of-the-art privacy suite developed by Atul
+          Paul. It allows users to convert plain text into unreadable ciphertext and vice versa, ensuring that sensitive
+          information remains confidential.</p>
+      </section>
+
+      <section id="how-it-works" class="scroll-mt-24">
+        <h2 class="text-2xl font-bold text-slate-800 mb-4 flex items-center"><i data-lucide="settings"
+            class="w-6 h-6 mr-2 text-blue-500"></i> How It Works</h2>
+        <p class="text-slate-600 leading-relaxed mb-4">Our system uses <strong>Symmetric Encryption</strong>. This means
+          the exact same password used to lock (encrypt) the data is required to unlock (decrypt) it.</p>
+        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 text-sm text-slate-700 font-mono">
+          Plain Text + Master Password ➜ Encrypted Ciphertext<br>
+          Encrypted Ciphertext + Master Password ➜ Plain Text
+        </div>
+      </section>
+
+      <section id="encryption" class="scroll-mt-24">
+        <h2 class="text-2xl font-bold text-slate-800 mb-4 flex items-center"><i data-lucide="lock"
+            class="w-6 h-6 mr-2 text-blue-500"></i> Encrypting Data</h2>
+        <ul class="list-disc list-inside text-slate-600 leading-relaxed space-y-2">
+          <li>Go to the <strong>Home</strong> page and select the <strong>Encryption</strong> tab.</li>
+          <li>Type or paste your sensitive message into the input box.</li>
+          <li>Enter a strong <strong>Master Password</strong> (or use the Generate Strong Key button).</li>
+          <li>Click "Secure Encryption".</li>
+          <li>Copy the resulting Ciphertext and keep it safe!</li>
+        </ul>
+      </section>
+
+      <section id="decryption" class="scroll-mt-24">
+        <h2 class="text-2xl font-bold text-slate-800 mb-4 flex items-center"><i data-lucide="unlock"
+            class="w-6 h-6 mr-2 text-emerald-500"></i> Decrypting Data</h2>
+        <ul class="list-disc list-inside text-slate-600 leading-relaxed space-y-2">
+          <li>Select the <strong>Decryption</strong> tab on the Home page.</li>
+          <li>Paste the exact Ciphertext you previously generated.</li>
+          <li>Enter the exact <strong>Master Password</strong> used during encryption.</li>
+          <li>Click "Decrypt Now" to reveal your original message.</li>
+        </ul>
+        <div class="mt-4 bg-red-50 border-l-4 border-red-500 p-4 text-sm text-red-700 rounded-xl">
+          <strong>Warning:</strong> If you forget your password or modify even a single character of the Ciphertext, the
+          data cannot be recovered. There is no password reset feature for encrypted data.
+        </div>
+      </section>
+
+      <section id="security" class="scroll-mt-24">
+        <h2 class="text-2xl font-bold text-slate-800 mb-4 flex items-center"><i data-lucide="shield"
+            class="w-6 h-6 mr-2 text-blue-500"></i> Security & Privacy</h2>
+        <p class="text-slate-600 leading-relaxed mb-4">We take your privacy seriously. Here is how EncryptoPro keeps you
+          safe:</p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
+          <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+            <h4 class="font-bold text-slate-800 mb-1">AES-256 Encryption</h4>
+            <p class="text-xs text-slate-500">We utilize the Fernet symmetric encryption module from Python's
+              cryptography library, which is built on AES in CBC mode with a 128-bit IV.</p>
+          </div>
+          <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+            <h4 class="font-bold text-slate-800 mb-1">PBKDF2 Hashing</h4>
+            <p class="text-xs text-slate-500">Your password is never used directly. It is hashed 480,000 times using
+              SHA256 with a random salt to generate the final encryption key.</p>
+          </div>
+          <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+            <h4 class="font-bold text-slate-800 mb-1">Zero-Knowledge</h4>
+            <p class="text-xs text-slate-500">No data or passwords are ever saved on our backend servers. The entire
+              process happens instantly and the data is immediately discarded from memory.</p>
+          </div>
+          <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+            <h4 class="font-bold text-slate-800 mb-1">Local History</h4>
+            <p class="text-xs text-slate-500">Your recent activity log is stored purely in your browser's local memory
+              and is never transmitted anywhere.</p>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,223 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="text-center mb-10">
+    <h1
+        class="text-3xl lg:text-4xl font-extrabold bg-gradient-to-r from-pink-400 to-purple-700 bg-clip-text text-transparent mb-3 tracking-tight">
+        Advanced Data Vault</h1>
+    <p class="text-slate-500 text-sm lg:text-base">Military-grade AES-256 encryption for your sensitive messages and
+        passwords.</p>
+</div>
+
+<div class="bg-white rounded-3xl shadow-xl shadow-slate-200/50 border border-slate-100 overflow-hidden">
+
+    <div class="flex border-b border-slate-100 bg-slate-50/50">
+        <button onclick="switchTab('encrypt')" id="tab-enc"
+            class="flex-1 py-4 text-sm text-pink-200 font-semibold transition-all flex justify-center items-center space-x-2 tab-active cursor-pointer">
+            <i data-lucide="lock" class="w-4 h-4 animate-bounce"></i> <span>Encryption</span>
+        </button>
+        <button onclick="switchTab('decrypt')" id="tab-dec"
+            class="flex-1 py-4 text-sm font-semibold transition-all flex justify-center items-center space-x-2 text-emerald-400 hover:text-emerald-600 cursor-pointer">
+            <i data-lucide="unlock" class="w-4 h-4 animate-pulse"></i> <span>Decryption</span>
+        </button>
+    </div>
+
+    <div class="p-6 lg:p-8">
+        <div id="view-encrypt" class="space-y-6">
+            <div>
+                <label class="block text-xs font-bold text-slate-400 uppercase mb-2">Message or Code</label>
+                <textarea id="enc-text" rows="4"
+                    class="w-full p-4 bg-slate-50 border border-slate-200 rounded-2xl focus:ring-4 focus:ring-blue-100 focus:border-blue-500 outline-none transition text-sm"
+                    placeholder="Paste your sensitive data here..."></textarea>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 items-center">
+                <div>
+                    <label class="block text-xs font-bold text-slate-400 uppercase mb-2">Master Password</label>
+                    <input type="password" id="enc-pass" oninput="checkStrength(this.value)"
+                        class="w-full p-4 bg-slate-50 border border-pink-200 rounded-2xl focus:ring-4 focus:ring-pink-100 focus:border-pink-500 outline-none transition text-sm"
+                        placeholder="Your secret key">
+                    <div class="mt-2 flex space-x-1 h-1.5" id="strength-meter">
+                        <div class="flex-1 rounded-full bg-slate-200"></div>
+                        <div class="flex-1 rounded-full bg-slate-200"></div>
+                        <div class="flex-1 rounded-full bg-slate-200"></div>
+                    </div>
+                </div>
+                <div class="flex items-end">
+                    <button onclick="generatePass()"
+                        class="w-full p-4 border border-pink-200 text-pink-600 rounded-2xl text-xs font-bold hover:bg-pink-50 transition flex justify-center items-center space-x-2 cursor-pointer">
+                        <i data-lucide="refresh-cw" class="w-4 h-4"></i> <span>Generate Strong Key</span>
+                    </button>
+                </div>
+            </div>
+
+            <button onclick="processData('encrypt')"
+                class="w-full bg-gradient-to-tr from-pink-400 to-purple-700 hover:bg-gradient-to-r hover:from-pink-300 hover:to-purple-600  text-white font-bold py-4 rounded-2xl shadow-2xl shadow-pink-200 transition active:scale-[0.98] cursor-pointer flex justify-center items-center gap-2">
+                <i data-lucide="lock-keyhole" class="w-5 h-5"></i>
+                <span>Secure Encryption</span>
+            </button>
+
+            <div id="res-enc-box" class="hidden">
+                <label class="block text-xs font-bold text-slate-400 uppercase mb-2">Ciphertext Output</label>
+                <div class="relative">
+                    <textarea id="enc-result" rows="3"
+                        class="w-full p-4 bg-blue-50/50 border border-blue-100 rounded-2xl text-blue-900 text-xs font-mono"
+                        readonly></textarea>
+                    <button onclick="copy('enc-result')"
+                        class="absolute top-3 right-3 p-2 bg-white shadow-sm rounded-lg hover:bg-pink-100 transition cursor-pointer">
+                        <i data-lucide="copy" class="w-4 h-4 text-pink-600"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="view-decrypt" class="hidden space-y-6">
+            <div>
+                <label class="block text-xs font-bold text-slate-400 uppercase mb-2">Encrypted Ciphertext</label>
+                <textarea id="dec-text" rows="4"
+                    class="w-full p-4 bg-slate-50 border border-slate-200 rounded-2xl focus:ring-4 focus:ring-emerald-100 focus:border-emerald-500 outline-none transition text-sm"
+                    placeholder="Paste the encrypted code here..."></textarea>
+            </div>
+
+            <div>
+                <label class="block text-xs font-bold text-slate-400 uppercase mb-2">Security Key</label>
+                <input type="password" id="dec-pass"
+                    class="w-full p-4 bg-slate-50 border border-slate-200 rounded-2xl focus:ring-4 focus:ring-emerald-100 focus:border-emerald-500 outline-none transition text-sm"
+                    placeholder="Enter the exact master password">
+            </div>
+
+            <button onclick="processData('decrypt')"
+                class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-4 rounded-2xl shadow-lg shadow-emerald-200 transition active:scale-[0.98] cursor-pointer flex justify-center items-center gap-2">
+                <i data-lucide="unlock-keyhole" class="w-5 h-5"></i>
+                <span>Decrypt Now</span>
+            </button>
+
+            <div id="res-dec-box" class="hidden">
+                <label class="block text-xs font-bold text-slate-400 uppercase mb-2">Original Data</label>
+                <div class="relative">
+                    <textarea id="dec-result" rows="3"
+                        class="w-full p-4 bg-emerald-50/50 border border-emerald-100 rounded-2xl text-emerald-900 text-sm"
+                        readonly></textarea>
+                    <button onclick="copy('dec-result')"
+                        class="absolute top-3 right-3 p-2 bg-white shadow-sm rounded-lg hover:bg-emerald-100 transition cursor-pointer">
+                        <i data-lucide="copy" class="w-4 h-4 text-emerald-600"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="mt-8">
+    <h3 class="text-sm font-bold text-slate-400 uppercase tracking-widest mb-4 flex items-center space-x-2">
+        <i data-lucide="history" class="w-4 h-4"></i> <span>Recent Activity</span>
+    </h3>
+    <div id="history-list" class="space-y-3">
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    const API_BASE = "http://127.0.0.1:5000/api";
+
+    function switchTab(type) {
+        const encBtn = document.getElementById('tab-enc');
+        const decBtn = document.getElementById('tab-dec');
+        const viewEnc = document.getElementById('view-encrypt');
+        const viewDec = document.getElementById('view-decrypt');
+
+        if (type === 'encrypt') {
+            viewEnc.classList.remove('hidden');
+            viewDec.classList.add('hidden');
+
+            // এনক্রিপশন ট্যাব একটিভ (Pink)
+            encBtn.classList.add('tab-active', 'text-pink-600');
+            encBtn.classList.remove('text-slate-400');
+
+            decBtn.classList.remove('tab-active', 'text-pink-600');
+            decBtn.classList.add('text-slate-400');
+        } else {
+            viewEnc.classList.add('hidden');
+            viewDec.classList.remove('hidden');
+
+            // ডিক্রিপশন ট্যাব একটিভ (Rose/Pink এর কাছাকাছি)
+            decBtn.classList.add('tab-active', 'text-rose-600');
+            decBtn.classList.remove('text-slate-400');
+
+            encBtn.classList.remove('tab-active', 'text-pink-600');
+            encBtn.classList.add('text-slate-400');
+        }
+    }
+    function checkStrength(p) {
+        const bars = document.getElementById('strength-meter').children;
+        const score = p.length > 8 ? (/[A-Z]/.test(p) && /[0-9]/.test(p) ? 3 : 2) : (p.length > 0 ? 1 : 0);
+        for (let i = 0; i < 3; i++) bars[i].className = i < score ? `flex-1 rounded-full ${['bg-red-400', 'bg-orange-400', 'bg-green-500'][score - 1]}` : 'flex-1 rounded-full bg-slate-200';
+    }
+
+    function generatePass() {
+        const p = Math.random().toString(36).slice(-10).toUpperCase() + Math.floor(Math.random() * 100);
+        document.getElementById('enc-pass').value = p;
+        checkStrength(p);
+    }
+
+    async function processData(type) {
+        const text = document.getElementById(`${type === 'encrypt' ? 'enc' : 'dec'}-text`).value;
+        const password = document.getElementById(`${type === 'encrypt' ? 'enc' : 'dec'}-pass`).value;
+        const resBox = document.getElementById(`${type === 'encrypt' ? 'res-enc-box' : 'res-dec-box'}`);
+        const resArea = document.getElementById(`${type === 'encrypt' ? 'enc' : 'dec'}-result`);
+
+        if (!text || !password) return alert("Please fill all fields!");
+
+        try {
+            const r = await fetch(`${API_BASE}/${type}`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ text, password })
+            });
+            const d = await r.json();
+            if (r.ok) {
+                resArea.value = d.result;
+                resBox.classList.remove('hidden');
+                addToHistory(type, text.substring(0, 20) + "...");
+            } else {
+                alert("Error: " + d.error);
+            }
+        } catch { alert("Backend Server Offline!"); }
+    }
+
+    function copy(id) {
+        const el = document.getElementById(id);
+        if (!el.value) return alert("Nothing to copy!");
+
+        el.select();
+        el.setSelectionRange(0, 99999);
+        try {
+            document.execCommand("copy");
+            alert("Copied to clipboard! ✓");
+        } catch (err) {
+            navigator.clipboard.writeText(el.value).then(() => {
+                alert("Copied to clipboard! ✓");
+            }).catch(() => {
+                alert("Copy failed! Please select the text and copy manually.");
+            });
+        }
+        window.getSelection().removeAllRanges();
+    }
+
+    function addToHistory(type, label) {
+        const list = document.getElementById('history-list');
+        const item = document.createElement('div');
+        item.className = "bg-white p-4 rounded-2xl border border-slate-100 flex justify-between items-center text-xs";
+        item.innerHTML = `
+            <div class="flex items-center space-x-3">
+                <span class="px-2 py-1 rounded-md ${type === 'encrypt' ? 'bg-pink-100 text-pink-600' : 'bg-rose-100 text-rose-600'} font-bold uppercase">${type}</span>
+                <span class="text-slate-600 font-medium">${label}</span>
+            </div>
+            <span class="text-slate-400">${new Date().toLocaleTimeString()}</span>
+        `;
+        list.prepend(item);
+        if (list.children.length > 5) list.lastChild.remove();
+    }
+</script>
+{% endblock %}

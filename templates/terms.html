@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="bg-white p-8 lg:p-12 rounded-3xl shadow-sm border border-slate-100 mb-10">
+  <div class="flex items-center space-x-3 mb-6 border-b border-slate-100 pb-4">
+    <i data-lucide="file-text" class="w-8 h-8 text-emerald-600"></i>
+    <h1 class="text-3xl font-extrabold text-slate-900 tracking-tight">Terms of Service</h1>
+  </div>
+  <div class="space-y-4 text-slate-600 leading-relaxed text-sm">
+    <p>By using <strong>EncryptoPro</strong>, you agree to the following terms:</p>
+    <ul class="list-disc list-inside space-y-2 ml-4">
+      <li>You will use this tool responsibly and not for any illegal activities.</li>
+      <li>We are not liable for any lost data. If you forget your master password, your encrypted data cannot be
+        recovered.</li>
+      <li>This service is provided "as is" without any warranties.</li>
+    </ul>
+    <p class="mt-4 text-xs text-slate-400">Last updated: March 2026</p>
+  </div>
+</div>
+{% endblock %}
