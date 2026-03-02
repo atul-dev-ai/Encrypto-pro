@@ -15,6 +15,11 @@
 
 <img src="preview.png">
 
+## 📂 Project Setup
+1. Clone this repository:
+   ```bash
+   git clone https://github.com/atul-dev-ai/Encrypto-pro.git
+   ```
 ## 🛠️ Tech Stack
 * **Backend**: Python, Flask
 * **Frontend**: Tailwind CSS, Lucide Icons, Jinja2 Templates
