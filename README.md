@@ -1,7 +1,8 @@
 <div align="center">
 
-  <h1>🔐 EncryptoPro | Advanced Data Vault</h1>
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&height=300&section=header&text=EncryptoPro&fontSize=75&animation=fadeIn&fontAlign=50&fontAlignY=40&fontColor=ffffff&desc=AES-256%20Encryption%20%20%20%7C%20%20%20Zero-Knowledge%20%20%20%7C%20%20%20Data%20Vault&descAlign=50&descAlignY=65&descSize=20" alt="EncryptoPro Banner" width="100%" />
   
+  <br />
   <p><strong>A military-grade, zero-knowledge encryption suite built with Flask & Tailwind CSS.</strong></p>
 
   <p>
